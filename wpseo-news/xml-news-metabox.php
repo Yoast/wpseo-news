@@ -82,7 +82,7 @@ class WPSEO_XML_News_Sitemap_Metabox extends WPSEO_Metabox {
 	 */
 	public function get_meta_boxes() {
 		$mbs                             = array();
-		$options                         = get_option( 'wpseo' );
+		$options                         = get_option( 'wpseo_xml' );
 		$stdgenre                        = ( isset( $options['newssitemap_default_genre'] ) ) ? $options['newssitemap_default_genre'] : 'blog';
 		$mbs['newssitemap-include']      = array(
 			"name"  => "newssitemap-include",
@@ -97,6 +97,7 @@ class WPSEO_XML_News_Sitemap_Metabox extends WPSEO_Metabox {
 			"title"       => __( "Google News Genre", 'yoast-wpseo' ),
 			"description" => __( "Genre to show in Google News Sitemap.", 'yoast-wpseo' ),
 			"options"     => array(
+				"none"          => __( "None", 'yoast-wpseo' ),
 				"pressrelease"  => __( "Press Release", 'yoast-wpseo' ),
 				"satire"        => __( "Satire", 'yoast-wpseo' ),
 				"blog"          => __( "Blog", 'yoast-wpseo' ),
