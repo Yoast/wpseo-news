@@ -19,7 +19,7 @@ class WPSEO_XML_News_Sitemap_Metabox extends WPSEO_Metabox {
 	 */
 	public function ping() {
 		// Ping Google. Just do it. Not optional because if you don't want to ping Google you don't need no freaking news sitemap.
-		wp_remote_get( 'http://www.google.com/webmasters/tools/ping?sitemap=' . home_url( 'news_sitemap.xml' ) );
+		wp_remote_get( 'http://www.google.com/webmasters/tools/ping?sitemap=' . home_url( 'news-sitemap.xml' ) );
 	}
 
 	/**
