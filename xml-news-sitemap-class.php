@@ -165,6 +165,14 @@ class WPSEO_XML_News_Sitemap {
 						}
 					}
 				}
+				
+				// Also check if the featured image value is set. 
+				$post_thumbnail_id = get_post_thumbnail_id( $item->ID );
+
+                                if( $post_thumbnail_id ):
+                                    $post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
+                                    $images[$post_thumbnail_url] = $item->post_title;
+                                endif;
 
 				if ( isset( $images ) && count( $images ) > 0 ) {
 					foreach ( $images as $src => $img ) {
