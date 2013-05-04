@@ -107,7 +107,7 @@ class WPSEO_XML_News_Sitemap {
 				// TODO: add suggested keywords to each post based on category, next to the entire site
 				if ( isset( $this->options['newssitemap_default_keywords'] ) && $this->options['newssitemap_default_keywords'] != '' )
 					array_merge( $keywords, explode( ',', $this->options['newssitemap_default_keywords'] ) );
-				$keywords = strtolower(  trim( implode( ', ', $keywords ), ', ' ) );
+				$keywords = strtolower( implode( ', ', $keywords ) );
 
 				$genre = wpseo_get_value( 'newssitemap-genre', $item->ID );
 				if ( is_array( $genre ) )
@@ -165,14 +165,6 @@ class WPSEO_XML_News_Sitemap {
 						}
 					}
 				}
-				
-				// Also check if the featured image value is set. 
-				$post_thumbnail_id = get_post_thumbnail_id( $item->ID );
-
-                                if( $post_thumbnail_id ):
-                                    $post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
-                                    $images[$post_thumbnail_url] = $item->post_title;
-                                endif;
 
 				if ( isset( $images ) && count( $images ) > 0 ) {
 					foreach ( $images as $src => $img ) {
@@ -209,11 +201,11 @@ class WPSEO_XML_News_Sitemap {
 
 			$original_source = trim( wpseo_get_value( 'newssitemap-original', $post->ID ) );
 			if ( !empty( $original_source ) ) {
-				echo '<link rel="original-source" href="' . get_permalink( $post->ID ) . '" />' . "\n";
+				echo '' ;//issue in head, has no output, If left blank it stays blank, that is why removed.
 			} else {
 				$sources = explode( '|', $original_source );
 				foreach ( $sources as $source )
-					echo '<link rel="original-source" href="' . $source . '" />' . "\n";
+					echo '';//issue in head, it outputs the Post Permalink instead of original source one
 			}
 		}
 	}
