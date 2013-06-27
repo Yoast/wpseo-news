@@ -174,6 +174,8 @@ class WPSEO_XML_News_Sitemap {
                                     $images[$post_thumbnail_url] = $item->post_title;
                                 endif;
 
+				$images = apply_filters( 'wpseo_sitemap_urlimages', $images, $item->ID );
+				
 				if ( isset( $images ) && count( $images ) > 0 ) {
 					foreach ( $images as $src => $img ) {
 						$output .= "\t\t<image:image>\n";
