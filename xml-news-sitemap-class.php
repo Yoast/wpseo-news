@@ -51,8 +51,14 @@ class WPSEO_XML_News_Sitemap {
 	public function build_news_sitemap() {
 		global $wpdb;
 
-		if ( isset( $this->options['newssitemap_posttypes'] ) && $this->options['newssitemap_posttypes'] != '' ) {
-			$post_types = array_map( 'sanitize_key', $this->options['newssitemap_posttypes'] );
+        $post_types = array();
+        foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $posttype ) {
+            if ( isset( $this->options['newssitemap_include_' . $posttype->name] ) && ('on' == $this->options['newssitemap_include_' . $posttype->name] ) ) {
+                $post_types[] = $posttype->name;
+            }
+        }
+
+		if ( !empty($post_types) ) {
 			$post_types = "'" . implode( "','", $post_types ) . "'";
 		} else {
 			$post_types = "'post'";
