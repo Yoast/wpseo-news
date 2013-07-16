@@ -45,8 +45,15 @@ class WPSEO_XML_News_Sitemap_Metabox extends WPSEO_Metabox {
 	public function tab_header() {
 		global $post;
 
-		if ( isset ( $this->options['newssitemap_posttypes'] ) && $this->options['newssitemap_posttypes'] != '' ) {
-			foreach ( $this->options['newssitemap_posttypes'] as $post_type ) {
+        $post_types = array();
+        foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $posttype ) {
+            if ( isset( $this->options['newssitemap_include_' . $posttype->name] ) && ('on' == $this->options['newssitemap_include_' . $posttype->name] ) ) {
+                $post_types[] = $posttype->name;
+            }
+        }
+
+		if ( !empty($post_types) ) {
+        	foreach ( $post_types as $post_type ) {
 				if ( $post->post_type == $post_type )
 					echo '<li class="news"><a class="wpseo_tablink" href="#wpseo_news">' . __( 'Google News' ) . '</a></li>';
 			}
@@ -64,8 +71,15 @@ class WPSEO_XML_News_Sitemap_Metabox extends WPSEO_Metabox {
 	public function tab_content() {
 		global $post;
 
-		if ( isset( $this->options['newssitemap_posttypes'] ) && $this->options['newssitemap_posttypes'] != '' ) {
-			if ( !in_array( $post->post_type, $this->options['newssitemap_posttypes'] ) )
+        $post_types = array();
+        foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $posttype ) {
+            if ( isset( $this->options['newssitemap_include_' . $posttype->name] ) && ('on' == $this->options['newssitemap_include_' . $posttype->name] ) ) {
+                $post_types[] = $posttype->name;
+            }
+        }
+
+		if ( !empty($post_types) ) {
+			if ( !in_array( $post->post_type, $post_types ) )
 				return;
 		} else {
 			if ( $post->post_type != 'post' )
