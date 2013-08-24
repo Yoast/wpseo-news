@@ -161,7 +161,7 @@ class WPSEO_XML_News_Sitemap {
 							if ( preg_match( '/alt=("|\')([^"\']+)("|\')/', $img, $match ) )
 								$image['alt'] = str_replace( array( '-', '_' ), ' ', $match[2] );
 
-							$images[$src] = $image;
+							$images[apply_filters( 'wpseo_xml_sitemap_img_src', $src, $item )] = $image;
 						}
 					}
 				}
