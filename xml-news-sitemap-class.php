@@ -106,7 +106,7 @@ class WPSEO_XML_News_Sitemap {
 
 				// TODO: add suggested keywords to each post based on category, next to the entire site
 				if ( isset( $this->options['newssitemap_default_keywords'] ) && $this->options['newssitemap_default_keywords'] != '' )
-					array_merge( $keywords, explode( ',', $this->options['newssitemap_default_keywords'] ) );
+					$keywords = array_merge( $keywords, explode( ',', $this->options['newssitemap_default_keywords'] )  );
 				$keywords = strtolower(  trim( implode( ', ', $keywords ), ', ' ) );
 
 				$genre = wpseo_get_value( 'newssitemap-genre', $item->ID );
