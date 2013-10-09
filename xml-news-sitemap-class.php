@@ -208,7 +208,7 @@ class WPSEO_XML_News_Sitemap {
 			}
 
 			$original_source = trim( wpseo_get_value( 'newssitemap-original', $post->ID ) );
-			if ( !empty( $original_source ) ) {
+			if ( empty( $original_source ) ) {
 				echo '<link rel="original-source" href="' . get_permalink( $post->ID ) . '" />' . "\n";
 			} else {
 				$sources = explode( '|', $original_source );
