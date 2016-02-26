@@ -50,7 +50,6 @@ class WPSEO_News {
 		if ( is_admin() ) {
 			$this->init_admin();
 		}
-
 	}
 
 	/**
@@ -68,6 +67,7 @@ class WPSEO_News {
 
 		// Register settings
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_init', array( $this, 'init_helpscout_beacon' ) );
 	}
 
 	/**
@@ -260,6 +260,20 @@ class WPSEO_News {
 	 */
 	public function error_upgrade_wpseo() {
 		echo '<div class="error"><p>' . __( 'Please upgrade the WordPress SEO plugin to the latest version to allow the WordPress SEO News module to work.', 'wordpress-seo-news' ) . '</p></div>';
+	}
+
+	/**
+	 * Initializes the helpscout beacon
+	 */
+	public function init_helpscout_beacon() {
+		$query_var = ( $page = filter_input( INPUT_GET, 'page' ) ) ? $page : '';
+
+		// Only add the helpscout beacon on Yoast SEO pages.
+		if ( substr( $query_var, 0, 5 ) === 'wpseo' ) {
+			$beacon = yoast_get_helpscout_beacon( $query_var );
+			$beacon->add_setting( new WPSEO_News_Beacon_Setting() );
+			$beacon->register_hooks();
+		}
 	}
 
 	// HELPERS

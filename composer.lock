@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bfbfcbb396724b5516b5a0e68a12469d",
-    "content-hash": "d5fb5ed236a30df926e58e55ea1398d4",
+    "hash": "ad71bbd712a6cfc263eebb30792b4513",
+    "content-hash": "d3de816142d355e9951f42113545a036",
     "packages": [
         {
             "name": "xrstf/composer-php52",
@@ -38,6 +38,46 @@
             ],
             "homepage": "http://www.xrstf.de/",
             "time": "2015-10-01 14:11:58"
+        },
+        {
+            "name": "yoast/wp-helpscout",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yoast/wp-helpscout.git",
+                "reference": "624be69461b091eb19229787f1ce103668c87762"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yoast/wp-helpscout/zipball/624be69461b091eb19229787f1ce103668c87762",
+                "reference": "624be69461b091eb19229787f1ce103668c87762",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Team Yoast",
+                    "email": "support@yoast.com",
+                    "homepage": "https://yoast.com"
+                }
+            ],
+            "description": "A package to integrate the helpscout beacon into WordPress",
+            "support": {
+                "source": "https://github.com/Yoast/wp-helpscout/tree/master",
+                "issues": "https://github.com/Yoast/wp-helpscout/issues"
+            },
+            "time": "2016-02-26 07:41:53"
         }
     ],
     "packages-dev": [
@@ -51,7 +91,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/02790d733f9eb43d0a5981962c41846092fb387f",
+                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/9ec2098c9e9839840176c46d9cdab3a57c26ca1c",
                 "reference": "02790d733f9eb43d0a5981962c41846092fb387f",
                 "shasum": ""
             },
@@ -957,6 +997,51 @@
             "time": "2015-06-30 21:54:21"
         },
         {
+            "name": "yoast/license-manager",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yoast/License-Manager.git",
+                "reference": "8caf52202bf51011686e31c9a43b18731047f1be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yoast/License-Manager/zipball/8caf52202bf51011686e31c9a43b18731047f1be",
+                "reference": "8caf52202bf51011686e31c9a43b18731047f1be",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class-api-request.php",
+                    "class-license-manager.php",
+                    "class-plugin-license-manager.php",
+                    "class-plugin-update-manager.php",
+                    "class-product.php",
+                    "class-theme-license-manager.php",
+                    "class-theme-update-manager.php",
+                    "class-update-manager.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Team Yoast",
+                    "email": "support@yoast.com",
+                    "homepage": "https://yoast.com"
+                }
+            ],
+            "description": "Yoast License Manager.",
+            "homepage": "https://github.com/Yoast/License-Manager",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2015-03-16 11:51:33"
+        },
+        {
             "name": "yoast/yoastcs",
             "version": "dev-master",
             "source": {
@@ -1002,6 +1087,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "yoast/wp-helpscout": 20,
         "yoast/yoastcs": 20,
         "codeclimate/php-test-reporter": 20
     },
