@@ -1,7 +1,7 @@
-<?php if ( extension_loaded('newrelic') ) {
+<?php if ( extension_loaded( 'newrelic' ) ) {
 	newrelic_disable_autorum();
 	newrelic_ignore_transaction();
-	}
+}
 echo '<?xml version="1.0" encoding="UTF-8"?>'?>
 <xsl:stylesheet version="2.0"
 	xmlns:html="http://www.w3.org/TR/REC-html40"
