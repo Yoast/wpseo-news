@@ -2,7 +2,7 @@ Yoast News SEO for Yoast SEO
 ==========================
 Requires at least: 4.3
 Tested up to: 4.5
-Stable tag: 3.2
+Stable tag: 3.3
 Depends: wordpress-seo
 
 
@@ -23,6 +23,15 @@ Installation
 
 Changelog
 =========
+
+### 3.3: June 14th, 2016
+
+* Enhancements
+	* Adds the Yoast i18n module to the Yoast SEO News settings page, which informs users the plugin isn't available in their language and what they can do about it.
+
+* Bugfixes
+    * Fixes a bug where the support beacon for Yoast SEO News was added to all Yoast SEO settings pages.
+    * Fixes a bug where updates were not working reliably when multiple paid Yoast plugins were active.
 
 ### 3.2: April 20th, 2016
 
