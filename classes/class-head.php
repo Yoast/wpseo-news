@@ -68,11 +68,11 @@ class WPSEO_News_Head {
 		if ( apply_filters( 'wpseo_news_head_display_original', true, $this->post ) ) {
 			$original_source = trim( WPSEO_Meta::get_value( 'newssitemap-original', $this->post->ID ) );
 			if ( empty( $original_source ) ) {
-				echo '<link rel="original-source" href="' . get_permalink( $this->post->ID ) . '" />' . "\n";
+				echo '<meta name="original-source" value="' . get_permalink( $this->post->ID ) . '" />' . "\n";
 			} else {
 				$sources = explode( '|', $original_source );
 				foreach ( $sources as $source ) {
-					echo '<link rel="original-source" href="' . $source . '" />' . "\n";
+					echo '<meta name="original-source" value="' . $source . '" />' . "\n";
 				}
 			}
 		}
