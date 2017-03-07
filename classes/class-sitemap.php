@@ -94,7 +94,12 @@ class WPSEO_News_Sitemap {
 			return;
 		}
 
-		wpseo_invalidate_sitemap_cache( $this->basename );
+		if ( method_exists( 'WPSEO_Sitemaps_Cache', 'invalidate' ) ) {
+			WPSEO_Sitemaps_Cache::invalidate( $this->basename );
+		}
+		else {
+			wpseo_invalidate_sitemap_cache( $this->basename );
+		}
 	}
 
 	/**
