@@ -27,7 +27,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 
 	/**
 	 * @covers WPSEO_News_Sitemap::add_to_index
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_add_to_index() {
 
@@ -73,7 +72,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_NOT_empty() {
 		$post_id = $this->factory->post->create( array(
@@ -104,7 +102,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_post_excluded() {
 		// Create post
@@ -128,7 +125,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with keywords
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_keywords() {
 		// Create post
@@ -150,7 +146,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with only a single tag
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_tags() {
 		// Create post
@@ -173,7 +168,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added and there is are default keywords present
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_default_keywords() {
 
@@ -201,7 +195,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with keywords and tags
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_keywords_AND_tags() {
 
@@ -228,7 +221,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with keywords and tags
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_tags_AND_default_keywords() {
 		// Create post
@@ -254,7 +246,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with tags, keywords and default keywords
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_keywords_and_default_keywords() {
 
@@ -281,7 +272,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with keywords and default keywords
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_keywords_AND_tags_AND_default_keywords() {
 
@@ -311,7 +301,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if post added with some simular tags, keywords and default keywords
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_SIMULAR_keywords_AND_tags_AND_default_keywords() {
 
@@ -342,7 +331,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with a image in its content
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_image() {
 
@@ -366,7 +354,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with a image in its content
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITHOUT_featured_image_restricted() {
 
@@ -400,7 +387,6 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Check what happens if there is one post added with a image in its content
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
-	 * @expectedDeprecated wpseo_invalidate_sitemap_cache
 	 */
 	public function test_sitemap_WITH_featured_image_restricted() {
 
