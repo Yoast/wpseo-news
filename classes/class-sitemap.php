@@ -422,7 +422,8 @@ class WPSEO_News_Sitemap_Item {
 			return true;
 		}
 
-		if ( 'post' === $this->item->post_type && $this->exclude_item_terms() ) {
+		$exclude_item = $this->exclude_item_terms() || apply_filters( 'wpseo_news_sitemap_exclude_item', false, $this->item->ID );
+		if ( 'post' === $this->item->post_type && $exclude_item ) {
 			return true;
 		}
 
