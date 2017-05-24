@@ -117,13 +117,15 @@ class WPSEO_News_Sitemap_Editors_Pick {
 	 * Add a single item to $this->items
 	 */
 	private function set_item() {
-		$this->items[] = array(
+		$wpseo_news_item = apply_filters( 'wpseo_news_set_item', array(
 			'title'        => get_the_title(),
 			'link'         => get_permalink(),
 			'description'  => get_the_excerpt(),
 			'creator'      => get_the_author_meta( 'display_name' ),
 			'published_on' => get_the_date( DATE_RFC822 ),
-		);
+		) );
+
+		$this->items[] = $wpseo_news_item;
 	}
 
 	/**
