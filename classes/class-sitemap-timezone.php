@@ -24,7 +24,7 @@ class WPSEO_News_Sitemap_Timezone {
 	 *
 	 * @return string valid PHP timezone string
 	 */
-	private function wp_get_timezone_string() {
+	public function wp_get_timezone_string() {
 
 		// If site timezone string exists, return it.
 		if ( $timezone = get_option( 'timezone_string' ) ) {
