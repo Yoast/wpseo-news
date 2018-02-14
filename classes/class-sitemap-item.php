@@ -251,7 +251,7 @@ class WPSEO_News_Sitemap_Item {
 		}
 
 		// Is there a timezone option and does it exists in the list of 'valid' timezone.
-		if ( $timezone_option !== '' && in_array( $timezone_option, DateTimeZone::listIdentifiers(), true ) ) {
+		if ( $timezone_option !== '' && in_array( $timezone_option->wp_get_timezone_string(), DateTimeZone::listIdentifiers(), true ) ) {
 			return DateTime::W3C;
 		}
 
