@@ -257,6 +257,8 @@ class WPSEO_News_Sitemap_Test extends WPSEO_News_UnitTestCase {
 	 * Checks that expired posts don't get included in the sitemap.
 	 *
 	 * @covers WPSEO_News_Sitemap::build_sitemap
+	 *
+	 * @requires PHP 5.5
 	 */
 	public function test_sitemap_only_showing_recent_items() {
 		$base_time = new DateTimeImmutable();
