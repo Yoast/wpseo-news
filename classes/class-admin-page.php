@@ -115,9 +115,9 @@ class WPSEO_News_Admin_Page {
 		foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $post_type ) {
 			if ( isset( $this->options[ 'newssitemap_include_' . $post_type->name ] ) && ( 'on' === $this->options[ 'newssitemap_include_' . $post_type->name ] ) ) {
 				$taxonomies = get_object_taxonomies( $post_type->name, 'objects' );
-				foreach( $taxonomies as $taxonomy ) {
+				foreach ( $taxonomies as $taxonomy ) {
 					echo '<h2>' . sprintf( esc_html__( '%1$s %2$s to exclude', 'wordpress-seo-news' ), $post_type->labels->singular_name, $taxonomy->labels->name ) . '</h2>';
-					foreach( get_terms( array( 'taxonomy' => $taxonomy->name, 'hide_empty' => false ) ) as $term ) {
+					foreach ( get_terms( array( 'taxonomy' => $taxonomy->name, 'hide_empty' => false ) ) as $term ) {
 						echo WPSEO_News_Wrappers::checkbox( 'term_exclude_' . $term->taxonomy . '_' . $term->slug, $term->name . ' (' . $term->count . ' posts)', false );
 					}
 				}
