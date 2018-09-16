@@ -112,13 +112,16 @@ class WPSEO_News_Admin_Page {
 	 * Generate HTML for excluding post categories.
 	 */
 	private function excluded_post_categories() {
-		if ( isset( $this->options['newssitemap_include_post'] ) ) {
-			echo '<h2>' . esc_html__( 'Post categories to exclude', 'wordpress-seo-news' ) . '</h2>';
-			echo '<fieldset><legend class="screen-reader-text">' . esc_html__( 'Post categories to exclude', 'wordpress-seo-news' ) . '</legend>';
-			foreach ( get_categories() as $cat ) {
-				echo WPSEO_News_Wrappers::checkbox( 'catexclude_' . $cat->slug, $cat->name . ' (' . $cat->count . ' posts)', false );
+		foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $post_type ) {
+			if ( isset( $this->options[ 'newssitemap_include_' . $post_type->name ] ) && ( 'on' === $this->options[ 'newssitemap_include_' . $post_type->name ] ) ) {
+				$taxonomies = get_object_taxonomies( $post_type->name, 'objects' );
+				foreach( $taxonomies as $taxonomy ) {
+					echo '<h2>' . sprintf( esc_html__( '%1$s %2$s to exclude', 'wordpress-seo-news' ), $post_type->labels->singular_name, $taxonomy->labels->name ) . '</h2>';
+					foreach( get_terms( array( 'taxonomy' => $taxonomy->name, 'hide_empty' => false ) ) as $term ) {
+						echo WPSEO_News_Wrappers::checkbox( 'term_exclude_' . $term->taxonomy . '_' . $term->slug, $term->name . ' (' . $term->count . ' posts)', false );
+					}
+				}
 			}
-			echo '</fieldset><br>';
 		}
 	}
 
