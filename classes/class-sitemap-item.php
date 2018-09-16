@@ -82,7 +82,7 @@ class WPSEO_News_Sitemap_Item {
 			return true;
 		}
 
-		if ( 'post' === $this->item->post_type && $this->exclude_item_terms() ) {
+		if ( $this->exclude_item_terms() ) {
 			return true;
 		}
 
@@ -95,20 +95,30 @@ class WPSEO_News_Sitemap_Item {
 	 * @return bool
 	 */
 	private function exclude_item_terms() {
-		$cats    = get_the_terms( $this->item->ID, 'category' );
-		$exclude = 0;
-
-		if ( is_array( $cats ) ) {
-			foreach ( $cats as $cat ) {
-				if ( isset( $this->options[ 'catexclude_' . $cat->slug ] ) ) {
-					$exclude ++;
-				}
+		foreach ( $this->get_terms_for_item() as $term ) {
+			if ( isset( $this->options[ 'term_exclude_' . $term->taxonomy . '_' . $term->slug ] ) ) {
+				return true;
 			}
 		}
 
-		if ( $exclude >= count( $cats ) ) {
-			return true;
+		return false;
+	}
+
+	/**
+	 * Retrieve all the Term IDs for all the items.
+	 *
+	 * @return array
+	 */
+	private function get_terms_for_item() {
+		$terms = array();
+		foreach( get_object_taxonomies( $this->item->post_type ) as $taxonomy ) {
+			$extra_terms = get_the_terms( $this->item->ID, $taxonomy );
+			if ( is_array( $extra_terms ) && count( $extra_terms ) > 0 ) {
+				$terms = array_merge( $terms, $extra_terms );
+			}
 		}
+
+		return $terms;
 	}
 
 	/**

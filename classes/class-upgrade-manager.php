@@ -18,7 +18,6 @@ class WPSEO_News_Upgrade_Manager {
 	 * Check if there's a plugin update.
 	 */
 	public function check_update() {
-
 		// Get options.
 		$options = WPSEO_News::get_options();
 
@@ -30,7 +29,6 @@ class WPSEO_News_Upgrade_Manager {
 			// Update version code.
 			$this->update_current_version_code();
 		}
-
 	}
 
 	/**
@@ -52,6 +50,11 @@ class WPSEO_News_Upgrade_Manager {
 		// Upgrade to version 7.8.
 		if ( version_compare( $current_version, '7.8', '<' ) ) {
 			$this->upgrade_78();
+		}
+
+		// Upgrade to version 8.3
+		if ( version_compare( $current_version, '8.3', '<' ) ) {
+			$this->upgrade_83();
 		}
 	}
 
@@ -108,6 +111,24 @@ class WPSEO_News_Upgrade_Manager {
 
 		// Delete all original source references.
 		$this->delete_meta_by_key( '_yoast_wpseo_newssitemap-original' );
+	}
+
+	/**
+	 * Perform the upgrade to 8.3.
+	 */
+	private function upgrade_83() {
+		// Get current options.
+		$options = get_option( 'wpseo_news' );
+		foreach( $options as $key => $value ) {
+			if ( strpos( $key, 'catexclude_' ) === 0 ) {
+				$slug                                        = str_replace( 'catexclude_', '', $key );
+				$options[ 'term_exclude_category_' . $slug ] = $value;
+				unset( $options[ $key ] );
+			}
+		}
+
+		// Update options.
+		update_option( 'wpseo_news', $options );
 	}
 
 	/**
