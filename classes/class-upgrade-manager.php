@@ -52,7 +52,7 @@ class WPSEO_News_Upgrade_Manager {
 			$this->upgrade_78();
 		}
 
-		// Upgrade to version 8.3
+		// Upgrade to version 8.3.
 		if ( version_compare( $current_version, '8.3', '<' ) ) {
 			$this->upgrade_83();
 		}
@@ -119,7 +119,7 @@ class WPSEO_News_Upgrade_Manager {
 	private function upgrade_83() {
 		// Get current options.
 		$options = get_option( 'wpseo_news' );
-		foreach( $options as $key => $value ) {
+		foreach ( $options as $key => $value ) {
 			if ( strpos( $key, 'catexclude_' ) === 0 ) {
 				$slug                                        = str_replace( 'catexclude_', '', $key );
 				$options[ 'term_exclude_category_' . $slug ] = $value;
