@@ -2,7 +2,7 @@ Yoast News SEO for Yoast SEO
 ==========================
 Requires at least: 4.8
 Tested up to: 4.9.8
-Stable tag: 8.2
+Stable tag: 8.3-RC2
 Requires PHP: 5.2.4
 Depends: Yoast SEO
 
@@ -28,6 +28,13 @@ You can find the [Yoast News SEO FAQ](https://kb.yoast.com/kb/category/news-seo/
 
 Changelog
 =========
+
+### 8.3: September 25th, 2018
+Bugfixes:
+* Fixes a bug where the XML of the news sitemap would contain an incorrect publication time when the user would use a location-based timezone.
+
+Other:
+* Compatibility with Yoast SEO 8.3
 
 ### 8.2: September 11th, 2018
 Other:
