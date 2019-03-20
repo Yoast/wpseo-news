@@ -93,4 +93,127 @@ class WPSEO_News_Sitemap_Images_Test extends WPSEO_News_UnitTestCase {
 			),
 		);
 	}
+
+	/**
+	 * Retrieves an Sitemap Images instance.
+	 *
+	 * @param object $item
+	 * @param array  $options
+	 *
+	 * @return WPSEO_News_Sitemap_Images
+	 */
+	private function get_instance( $item, $options = null ) {
+		$options = ( null === $options ) ? WPSEO_News::get_options() : $options;
+		return new WPSEO_News_Sitemap_Images( $item, $options );
+	}
+
+	/**
+	 * Tests if a SRC is picked up correctly.
+	 *
+	 * @covers WPSEO_News_Sitemap_Images::get_images_from_content
+	 */
+	public function test_image_from_content() {
+
+		$image_url = get_home_url( null, 'image.jpg' );
+
+		$item = new StdClass();
+		$item->ID = 1;
+		$item->post_content = '<img src="' . $image_url . '" />';
+		$instance = $this->get_instance( $item );
+
+		$output = (string) $instance;
+
+		$this->assertContains( '<image:loc>' . $image_url . '</image:loc>', $output );
+	}
+
+	/**
+	 * Tests if a SRC with quotes is picked up correctly.
+	 *
+	 * @covers WPSEO_News_Sitemap_Images::get_images_from_content
+	 */
+	public function test_image_from_content_with_quote() {
+
+		$image_url = get_home_url( null, 'image\'-quote.jpg' );
+
+		$item = new StdClass();
+		$item->ID = 1;
+		$item->post_content = '<img src="' . $image_url . '" />';
+		$instance = $this->get_instance( $item );
+
+		$output = (string) $instance;
+
+		$this->assertContains( '<image:loc>' . $image_url . '</image:loc>', $output );
+	}
+
+	/**
+	 * Tests if a TITLE is picked up correctly.
+	 */
+	public function test_image_from_content_with_title() {
+
+		$image_url = get_home_url( null, 'image.jpg' );
+		$title = 'My Title';
+
+		$item = new StdClass();
+		$item->ID = 1;
+		$item->post_content = '<img src="' . $image_url . '" title="' . $title . '" />';
+		$instance = $this->get_instance( $item );
+
+		$output = (string) $instance;
+
+		$this->assertContains( '<image:title>' . $title . '</image:title>', $output );
+	}
+
+	/**
+	 * Tests if a TITLE with quotes is picked up correctly.
+	 */
+	public function test_image_from_content_with_title_with_quote() {
+
+		$image_url = get_home_url( null, 'image.jpg' );
+		$title = "My 'Title'";
+
+		$item = new StdClass();
+		$item->ID = 1;
+		$item->post_content = '<img src="' . $image_url . '" title="' . $title . '" />';
+		$instance = $this->get_instance( $item );
+
+		$output = (string) $instance;
+
+		$this->assertContains( '<image:title>' . $title . '</image:title>', $output );
+	}
+
+	/**
+	 * Tests if an ALT is picked up correctly.
+	 */
+	public function test_image_from_content_with_alt() {
+
+		$image_url = get_home_url( null, 'image.jpg' );
+		$alt = 'My Alt';
+
+		$item = new StdClass();
+		$item->ID = 1;
+		$item->post_content = '<img src="' . $image_url . '" alt="' . $alt . '" />';
+		$instance = $this->get_instance( $item );
+
+		$output = (string) $instance;
+
+		$this->assertContains( '<image:caption>' . $alt . '</image:caption>', $output );
+	}
+
+	/**
+	 * Tests if an ALT with quotes is picked up correctly.
+	 */
+	public function test_image_from_content_with_alt_with_quote() {
+
+		$image_url = get_home_url( null, 'image.jpg' );
+		$alt = "My 'Alt'";
+
+		$item = new StdClass();
+		$item->ID = 1;
+		$item->post_content = '<img src="' . $image_url . '" alt="' . $alt . '" />';
+		$instance = $this->get_instance( $item );
+
+		$output = (string) $instance;
+
+		$this->assertContains( '<image:caption>' . $alt . '</image:caption>', $output );
+	}
 }

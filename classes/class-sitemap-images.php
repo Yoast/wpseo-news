@@ -130,7 +130,7 @@ class WPSEO_News_Sitemap_Images {
 			$src = $home_url . $src;
 		}
 
-		if ( $src !== esc_url( $src ) ) {
+		if ( $src !== esc_url( $src, null, 'sanitize' ) ) {
 			return null;
 		}
 
