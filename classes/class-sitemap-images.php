@@ -96,7 +96,7 @@ class WPSEO_News_Sitemap_Images {
 	 */
 	private function get_images_from_content( $matches ) {
 		foreach ( $matches[0] as $img ) {
-			if ( ! preg_match( '/src=("|\')([^"|\']+)("|\')/', $img, $match ) ) {
+			if ( ! preg_match( '`src=(["\'])(.+?)\1`', $img, $match ) ) {
 				continue;
 			}
 
@@ -146,11 +146,11 @@ class WPSEO_News_Sitemap_Images {
 	 */
 	private function parse_image( $img ) {
 		$image = array();
-		if ( preg_match( '/title=("|\')([^"\']+)("|\')/', $img, $match ) ) {
+		if ( preg_match( '`title=(["\'])(.+?)\1`', $img, $match ) ) {
 			$image['title'] = str_replace( array( '-', '_' ), ' ', $match[2] );
 		}
 
-		if ( preg_match( '/alt=("|\')([^"\']+)("|\')/', $img, $match ) ) {
+		if ( preg_match( '`alt=(["\'])(.+?)\1`', $img, $match ) ) {
 			$image['alt'] = str_replace( array( '-', '_' ), ' ', $match[2] );
 		}
 
