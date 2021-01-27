@@ -19,7 +19,8 @@ abstract class TestCase extends YoastTestCase {
 
 		Monkey\Functions\stubs(
 			[
-				'is_admin'       => false,
+				'is_admin' => false,
+				'__'       => null,
 			]
 		);
 
