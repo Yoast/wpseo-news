@@ -51,4 +51,14 @@ class WPSEO_News_Updates_Notification {
 		$notification_center = Yoast_Notification_Center::get();
 		$notification_center->add_notification( $notification );
 	}
+
+	/**
+	 * Removes the updates notification from the Notification Center.
+	 *
+	 * @return void
+	 */
+	public static function remove_notification() {
+		$notification_center = Yoast_Notification_Center::get();
+		$notification_center->remove_notification_by_id( self::NOTIFICATION_ID );
+	}
 }

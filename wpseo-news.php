@@ -73,6 +73,21 @@ function yoast_wpseo_news_clear_sitemap_cache() {
 }
 
 /**
+ * Removes the News SEO notifications.
+ *
+ * @return void
+ */
+function yoast_wpseo_news_remove_notifications() {
+	if (
+		class_exists( 'Yoast_Notification_Center' ) &&
+		method_exists( 'Yoast_Notification_Center', 'get' ) &&
+		method_exists( 'Yoast_Notification_Center', 'remove_notification_by_id' )
+	) {
+		WPSEO_News_Updates_Notification::remove_notification();
+	}
+}
+
+/**
  * Clear the news sitemap when we activate the plugin.
  */
 function yoast_wpseo_news_activate() {
@@ -89,6 +104,7 @@ function yoast_wpseo_news_activate() {
  */
 function yoast_wpseo_news_deactivate() {
 	yoast_wpseo_news_clear_sitemap_cache();
+	yoast_wpseo_news_remove_notifications();
 }
 
 /**
