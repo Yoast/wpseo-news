@@ -13,7 +13,7 @@ module.exports = {
 			newHeadertemplate: "Changelog\n=========\n\n" + "### " + "VERSIONNUMBER" + ": " + "DATESTRING"  + "\n",
 			matchCorrectLines: "### " + "VERSIONNUMBER" + "(.|\\n)*?(?=(### \\d+[\.\\d]+\: |### Earlier versions|$))",
 			matchCorrectHeader: "### " + "VERSIONNUMBER" + "(.|\\n)*?\\n(?=(\\w\+?:\\n|### \\d+[\.\\d]+\: |### Earlier versions|$))",
-			matchCleanedChangelog: "### " + "VERSIONNUMBER" + "(.|\\n)*### Earlier versions|$",
+			matchCleanedChangelog: "### " + "VERSIONNUMBER" + "(.|\\n)*### Earlier versions",
 			replaceCleanedChangelog: "### Earlier versions",
 			defaultChangelogEntries: "",
 			useANewLineAfterHeader: false,
