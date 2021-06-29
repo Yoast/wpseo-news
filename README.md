@@ -30,6 +30,17 @@ You can find the [Yoast News SEO FAQ](https://kb.yoast.com/kb/category/news-seo/
 
 Changelog
 =========
+
+### 12.8: July 13th, 2021
+Enhancements:
+* Adds a filter to override the decision to omit an item from the news sitemap. Props to [joneslloyd](https://github.com/joneslloyd)
+
+Bugfixes:
+* removed a duplicate column selection
+
+Other:
+* Sets the minimum WordPress version to 5.6.
+
 ### 12.7: April 6th, 2021
 Enhancements:
 
@@ -45,14 +56,6 @@ Bugfixes:
 
 * Fixes a bug where certain conditions (e.g. using a different admin language) would result in an endless loop.
 * Fixes "mixed content" warnings on the News SEO options page.
-
-### 12.6: August 18th, 2020
-Enhancements:
-* Adds 'Article' as `@type` to articles that are set to be included in the news sitemap. This results in a `@type` array with at least 'Article' and 'NewsArticle'.
-
-Other:
-* Enables tracking when activating the plugin. It can be disabled in the Yoast SEO configuration wizard.
-* Sets the minimum supported WordPress version to 5.4.
 
 ### Earlier versions
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/news-seo-changelog).
