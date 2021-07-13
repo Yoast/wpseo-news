@@ -31,7 +31,7 @@
     "grunt-git": "^1.0.14",
     "grunt-po2json": "^0.3.0",
     "grunt-webpack": "^4.0.2",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "node-fetch": "^1.0.1",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
